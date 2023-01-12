@@ -107,7 +107,7 @@ const Calendar = () => (
               'mx-auto flex h-8 w-8 items-center justify-center rounded-full'
             )}
           >
-            <time dateTime={day.date}>{day.date.split('-').pop().replace(/^0/, '')}</time>
+            <time dateTime={day.date}>{day.date.split('-').pop()?.replace(/^0/, '')}</time>
           </button>
         </div>
       ))}
