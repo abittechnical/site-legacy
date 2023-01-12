@@ -1,9 +1,29 @@
 import Head from 'next/head'
-import { Inter } from '@next/font/google'
+import Link from 'next/link'
+import { compareDesc, format, parseISO } from 'date-fns'
+import { allPosts, Post } from 'contentlayer/generated'
 
-const inter = Inter({ subsets: ['latin'] })
+const PostCard = ({ title, date, url }: Post) => (
+  <div>
+    <p className="text-sm text-gray-500">
+      <time dateTime={date}>{format(parseISO(date), 'LLLL d, yyyy')}</time>
+    </p>
+    <a href="#" className="mt-2 block">
+      <p className="font-heading text-xl font-semibold text-gray-900">{title}</p>
+      <p className="mt-3 text-base text-gray-500">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam cupiditate dolorum eligendi enim et, ex
+        excepturi inventore ipsam ipsum libero minima obcaecati quas sed?
+      </p>
+    </a>
+    <div className="mt-3">
+      <a href={url} className="text-base font-semibold text-secondary-400 hover:text-indigo-500">
+        Read full story
+      </a>
+    </div>
+  </div>
+)
 
-export default function Home() {
+const Home = ({ posts }) => {
   return (
     <>
       <Head>
@@ -16,17 +36,33 @@ export default function Home() {
         <div className="bg-white">
           <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8">
             <div className="text-center">
-              <h2 className="text-lg font-semibold text-indigo-600">Pricing</h2>
-              <p className="mt-1 font-heading text-4xl font-bold tracking-tight text-primary-500 sm:text-5xl lg:text-6xl">
-                Take control of your team.
+              <h2 className="text-lg font-semibold text-neutral-400">Bitwhys Presents</h2>
+              <p className="mt-1 font-heading text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+                A Bit
+                <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-primary-400">
+                  <span className="relative text-neutral-900">Technical</span>
+                </span>
               </p>
               <p className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
                 Start building for free, then add a site plan to go live. Account plans unlock additional features.
               </p>
+            </div>
+            <div className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+              {posts.map(post => (
+                <PostCard key={post._id} {...post} />
+              ))}
             </div>
           </div>
         </div>
       </main>
     </>
   )
+}
+export default Home
+
+export const getStaticProps = async () => {
+  const posts = allPosts.sort((a, b) => {
+    return compareDesc(new Date(a.date), new Date(b.date))
+  })
+  return { props: { posts } }
 }

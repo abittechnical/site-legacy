@@ -9,8 +9,6 @@ const lexend = Lexend({
   variable: '--font-lexend',
 })
 
-console.log(lexend.variable)
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={`${lexend.variable} font-sans`}>
