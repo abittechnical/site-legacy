@@ -25,5 +25,5 @@ export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
 
-  mdx: { remarkPlugins: [remarkCodeHike] },
+  mdx: { remarkPlugins: [[remarkCodeHike, { theme }]] },
 })
