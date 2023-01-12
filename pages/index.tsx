@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { compareDesc, format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
-import { Header } from '../components'
+import { CustomLink, Header, WindowFrame } from '../components'
 
 const PostCard = ({ title, date, url }: Post) => (
   <div>
@@ -17,9 +17,9 @@ const PostCard = ({ title, date, url }: Post) => (
       </p>
     </div>
     <div className="mt-3">
-      <a href={url} className="text-base font-semibold text-secondary-400 hover:text-indigo-500">
+      <CustomLink href={url} className="text-base font-semibold text-secondary-400 hover:text-indigo-500">
         Read full story
-      </a>
+      </CustomLink>
     </div>
   </div>
 )
@@ -34,7 +34,7 @@ const Home = ({ posts }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container">
-        <div className="border bg-white py-16 px-6 shadow sm:py-24 lg:px-8">
+        <WindowFrame>
           <div className="text-center">
             <p className="mt-1  text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
               A Bit
@@ -51,7 +51,7 @@ const Home = ({ posts }) => {
               <PostCard key={post._id} {...post} />
             ))}
           </div>
-        </div>
+        </WindowFrame>
       </main>
     </>
   )

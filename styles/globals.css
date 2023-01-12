@@ -30,6 +30,9 @@
     margin-inline: auto;
     max-width: 800px;
   }
+  .custom-link {
+    @apply border-b-2 font-semibold hover:border-b-4;
+  }
   #site-header-container {
     width: 100%;
     padding: 1rem;

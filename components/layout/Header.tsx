@@ -18,7 +18,9 @@ const Header = ({}: HeaderProps) => {
         </h2>
         <div className="xl:flex-grow xl:py-4 xl:px-6 xl:text-base xl:leading-4">
           This garden is maintained by{` `}
-          <CustomLink href="#">Bitwhys</CustomLink>
+          <CustomLink isExternal href="https://bitwhys.com">
+            Bitwhys
+          </CustomLink>
         </div>
         <button className="py-4 px-6 leading-4">Login</button>
       </div>
