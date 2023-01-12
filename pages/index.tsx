@@ -9,7 +9,7 @@ const PostCard = ({ title, date, url }: Post) => (
       <time dateTime={date}>{format(parseISO(date), 'LLLL d, yyyy')}</time>
     </p>
     <a href="#" className="mt-2 block">
-      <p className="font-heading text-xl font-semibold text-gray-900">{title}</p>
+      <p className=" text-xl font-semibold text-gray-900">{title}</p>
       <p className="mt-3 text-base text-gray-500">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam cupiditate dolorum eligendi enim et, ex
         excepturi inventore ipsam ipsum libero minima obcaecati quas sed?
@@ -32,12 +32,12 @@ const Home = ({ posts }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-neutral-50">
-        <div className="bg-white">
-          <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8">
+      <main className="container">
+        <div>
+          <div className="border bg-white py-16 px-6 shadow sm:py-24 lg:px-8">
             <div className="text-center">
               <h2 className="text-lg font-semibold text-neutral-400">Bitwhys Presents</h2>
-              <p className="mt-1 font-heading text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+              <p className="mt-1  text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
                 A Bit
                 <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-primary-400">
                   <span className="relative text-neutral-900">Technical</span>

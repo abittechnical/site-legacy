@@ -1,18 +1,17 @@
-import { Lexend } from '@next/font/google'
+import { Sora } from '@next/font/google'
 import type { AppProps } from 'next/app'
 
 import '@code-hike/mdx/dist/index.css'
-import '@fontsource/bluu-next'
 import '../styles/globals.css'
 
-const lexend = Lexend({
+const sora = Sora({
   subsets: ['latin'],
-  variable: '--font-lexend',
+  variable: '--font-sora',
 })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${lexend.variable} font-sans`}>
+    <div className={`${sora.variable} font-sans`}>
       <Component {...pageProps} />
     </div>
   )

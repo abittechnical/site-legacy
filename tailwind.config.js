@@ -44,8 +44,16 @@ module.exports = {
         },
       },
       fontFamily: {
-        heading: ['Bluu Next', ...fontFamily.sans],
-        sans: ['var(--font-lexend)', ...fontFamily.sans],
+        sans: ['var(--font-sora)', ...fontFamily.sans],
+      },
+      boxShadow: {
+        DEFAULT: '12px 12px 0 0 #0d0d0d',
+      },
+      borderWidth: {
+        DEFAULT: '4px',
+      },
+      borderColor: {
+        DEFAULT: '#0d0d0d',
       },
     },
   },

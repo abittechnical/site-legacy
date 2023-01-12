@@ -1,6 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import { remarkCodeHike } from '@code-hike/mdx'
-import theme from './theme/dark-plus.json'
+import theme from './styles/dark-plus.json'
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
