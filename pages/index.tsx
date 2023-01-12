@@ -9,7 +9,7 @@ const PostCard = ({ title, date, url }: Post) => (
     <p className="text-sm text-gray-500">
       <time dateTime={date}>{format(parseISO(date), 'LLLL d, yyyy')}</time>
     </p>
-    <div href="#" className="mt-2 block">
+    <div className="mt-2 block">
       <p className=" text-xl font-semibold text-gray-900">{title}</p>
       <p className="mt-3 text-base text-gray-500">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam cupiditate dolorum eligendi enim et, ex
@@ -24,7 +24,7 @@ const PostCard = ({ title, date, url }: Post) => (
   </div>
 )
 
-const Home = ({ posts }) => {
+const Home = ({ posts }: { posts: Post[] }) => {
   return (
     <>
       <Head>

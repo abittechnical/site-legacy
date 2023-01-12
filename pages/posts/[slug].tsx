@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { format, parseISO } from 'date-fns'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts, Post } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { WindowFrame } from '../../components'
+import { GetStaticPropsContext } from 'next'
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
@@ -14,15 +15,15 @@ export const getStaticPaths = async () => {
   }
 }
 
-export async function getStaticProps({ params }) {
-  const post = allPosts.find(post => post._raw.flattenedPath === params.slug)
+export async function getStaticProps({ params }: GetStaticPropsContext) {
+  const post = allPosts.find(post => post._raw.flattenedPath === params?.slug)
   return {
     props: {
       post,
     },
   }
 }
-const Article = ({ post }) => {
+const Article = ({ post }: { post: Post }) => {
   const MDXContent = useMDXComponent(post.body.code)
   return (
     <>
