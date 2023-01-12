@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export type CustomLinkProps = {
   children: string
-  as: string
+  as?: string
   className?: string
   href: string
 }
