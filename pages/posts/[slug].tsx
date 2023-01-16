@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import { x } from '@xstyled/styled-components'
 import { format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import { WindowFrame } from '../../components'
+import { Container, WindowFrame } from '../../components'
 import { GetStaticPropsContext } from 'next'
 
 export const getStaticPaths = async () => {
@@ -30,21 +30,23 @@ const Article = ({ post }: { post: Post }) => {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <div className="container">
+      <Container>
         <WindowFrame withHeader>
           <article className="prose mx-auto lg:prose-xl">
-            <div className="mb-6 text-center">
-              <h1 className="mb-1 text-3xl font-bold">{post.title}</h1>
-              <time dateTime={post.date} className="text-sm text-slate-600">
+            <x.div mb={6} textAlign="center">
+              <x.h1 mb={1} fontSize="3xl" fontWeight="bold">
+                {post.title}
+              </x.h1>
+              <x.time fontSize="sm" color="gray-600" dateTime={post.date}>
                 {format(parseISO(post.date), 'LLLL d, yyyy')}
-              </time>
-            </div>
+              </x.time>
+            </x.div>
             <div className="cl-post-body">
               <MDXContent />
             </div>
           </article>
         </WindowFrame>
-      </div>
+      </Container>
     </>
   )
 }

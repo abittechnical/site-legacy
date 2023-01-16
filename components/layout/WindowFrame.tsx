@@ -1,4 +1,5 @@
 import React, { type ReactNode } from 'react'
+import styled, { x } from '@xstyled/styled-components'
 
 export type WindowFrameProps = {
   children: ReactNode
@@ -7,19 +8,49 @@ export type WindowFrameProps = {
   rightAction?: () => void
 }
 
+const Frame = styled.div`
+  position: relative;
+  border-radius: lg;
+  border-width: lg;
+  background: white;
+
+  :before {
+    position: absolute;
+    content: '';
+    width: full;
+    height: full;
+    top: 24px;
+    left: 24px;
+    background-color: primary-500;
+    border-radius: lg;
+    border-width: lg;
+    z-index: -1;
+  }
+`
+
 const WindowFrame = ({ children, withHeader = false }: WindowFrameProps) => {
   return (
-    <div className="border bg-white shadow">
+    <Frame>
       {withHeader && (
-        <header className="flex h-12 justify-end border-b bg-neutral-200 px-6">
-          <div className="flex items-center space-x-4">
-            <span className="h-6 w-6 rounded-full border bg-white"></span>
-            <span className="h-6 w-6 rounded-full border bg-white"></span>
-          </div>
-        </header>
+        <x.header
+          display="flex"
+          h={12}
+          justifyContent="flex-end"
+          borderRadius="lg lg 0 0"
+          borderBottomWidth
+          bg="gray-200"
+          px={6}
+        >
+          <x.div display="flex" alignItems="center" spaceX={4}>
+            <x.span h={6} w={6} borderRadius="full" borderWidth bg="white" />
+            <x.span h={6} w={6} borderRadius="full" borderWidth bg="white" />
+          </x.div>
+        </x.header>
       )}
-      <div className="p-8 xl:p-16">{children}</div>
-    </div>
+      <x.div borderRadius={withHeader ? '0 0 lg lg' : 'lg'} bg="white" p={{ _: 8, xl: 16 }}>
+        {children}
+      </x.div>
+    </Frame>
   )
 }
 

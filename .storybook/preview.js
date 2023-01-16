@@ -1,5 +1,4 @@
-import '../styles/globals.css'
-import { withSoraFont } from './decorators'
+import { withSoraFont, withXStyled } from './decorators'
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -10,4 +9,4 @@ export const parameters = {
   },
 }
 
-export const decorators = [withSoraFont]
+export const decorators = [withXStyled, withSoraFont]
