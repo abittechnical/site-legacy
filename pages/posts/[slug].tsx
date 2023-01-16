@@ -3,9 +3,12 @@ import { x } from '@xstyled/styled-components'
 import { format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import { Container, WindowFrame } from '../../components'
+import { Container, Heading, WindowFrame } from '../../components'
 import { GetStaticPropsContext } from 'next'
 
+const mdxComponents = {
+  h1: Heading,
+}
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
   console.log(paths)
@@ -24,7 +27,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   }
 }
 const Article = ({ post }: { post: Post }) => {
-  const MDXContent = useMDXComponent(post.body.code)
+  const MDXContent = useMDXComponent(post.body.code, mdxComponents)
   return (
     <>
       <Head>

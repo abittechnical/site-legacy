@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@code-hike/mdx': ^0.7.4
   '@fontsource/bluu-next': ^4.5.0
+  '@fontsource/sora': ^4.5.10
   '@headlessui/react': ^1.7.7
   '@heroicons/react': ^2.0.13
   '@next/font': 13.1.1
@@ -48,6 +49,7 @@ specifiers:
 
 dependencies:
   '@code-hike/mdx': 0.7.4_react@18.2.0
+  '@fontsource/sora': 4.5.10
   '@heroicons/react': 2.0.13_react@18.2.0
   '@next/font': 13.1.1
   '@xstyled/styled-components': 3.7.0_styled-components@5.3.6
@@ -2005,6 +2007,10 @@ packages:
   /@fontsource/bluu-next/4.5.0:
     resolution: {integrity: sha512-/GuT31ISZkfi5smjtBoMVehJb344zxqyyhoH7kX5nFaCz/xjEaM+2Fs7jnggeMeVjyx0TTx8iTwGtc1MMJJtOA==}
     dev: true
+
+  /@fontsource/sora/4.5.10:
+    resolution: {integrity: sha512-hArmXtMRBOXtvY7DzSr+v0hGvRSrpYXMNOLJK/U0AJjhdS23kir+13ZV79CjwMhwsm8dfIV+YWVGDWEvlUic/w==}
+    dev: false
 
   /@grpc/grpc-js/1.8.4:
     resolution: {integrity: sha512-oaETBotls7FTBpySg5dhyUCyXSxSeCMmkBBXHXG1iw57MiNoB6D7VRhkrXYbwyHM3Q3Afjp4KlsBX0Zb+ELZXw==}

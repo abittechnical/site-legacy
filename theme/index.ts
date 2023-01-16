@@ -1,6 +1,7 @@
 import { createGlobalStyle, defaultTheme, th } from '@xstyled/styled-components'
 export { ThemeProvider } from './ThemeProvider'
 
+const FONT_STACK = `'KT Projekt', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`
 export const theme = {
   ...defaultTheme,
   colors: {
@@ -53,28 +54,76 @@ export const theme = {
     ...defaultTheme.sizes,
     frame: '800px',
   },
-  fontFamily: {
-    sans: 'var(--font-sora)',
+  fonts: {
+    sans: FONT_STACK,
+    heading: 'Andmorey',
+    sunny: 'Sunny',
+    stonegert: 'Stonegert',
   },
 }
 
 export const GlobalStyles = createGlobalStyle`
- :root {
-   --background-primary: #000;
-   --background-secondary: #fff;
- }
- body {
-   font-size: lg;
-   background-image: -webkit-repeating-radial-gradient(
-     center center,
-     var(--background-primary),
-     var(--background-primary) 1px,
-     var(--background-secondary) 1px,
-     var(--background-secondary) 100%
-   );
-   background-size: 8px 8px;
-   @media (min-width: xl) {
-     padding-top: 32;
-   }
- }
+  :root {
+    --background-primary: #000;
+    --background-secondary: #fff;
+  }
+
+  body {
+    font-family: sans;
+    font-size: lg;
+    background-image: -webkit-repeating-radial-gradient(center center,
+    var(--background-primary),
+    var(--background-primary) 1px,
+    var(--background-secondary) 1px,
+    var(--background-secondary) 100%);
+    background-size: 8px 8px;
+    @media (min-width: xl) {
+      padding-top: 32;
+    }
+    @font-face {
+      font-family: 'Andmorey';
+      src: url("/fonts/ANDMOREY-Outline.woff2") format('woff2'),
+      url("/fonts/ANDMOREY-Outline.woff") format('woff'),
+      url("/fonts/ANDMOREY Outline.otf") format('opentype');
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Sunny';
+      src: url("/fonts/SunnyCatalina_Bold.otf") format('opentype');
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Stonegert';
+      src: url("/fonts/Stonegert.otf") format('opentype');
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'KT Projekt';
+      src: url("/fonts/KT Projekt Regular.otf") format('opentype');
+      font-style: normal;
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'KT Projekt';
+      src: url("/fonts/KT Projekt Light.otf") format('opentype');
+      font-style: normal;
+      font-weight: 300;
+    }
+    @font-face {
+      font-family: 'KT Projekt';
+      src: url("/fonts/KT Projekt Medium.otf") format('opentype');
+      font-style: normal;
+      font-weight: 500;
+    }
+  }
+  .casual-text {
+    -webkit-text-stroke: 1px black;
+    color: white;
+    text-shadow:
+      3px 3px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
 `

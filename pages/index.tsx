@@ -37,29 +37,24 @@ const Home = ({ posts }: { posts: Post[] }) => {
       </Head>
       <Container>
         <WindowFrame>
-          <div className="text-center">
-            <x.p
+          <x.div textAlign="center">
+            <x.h1
               mt={1}
               fontSize={{ _: '4xl', sm: '5xl', lg: '6xl' }}
               fontWeight="bold"
               letterSpacing="tight"
-              color="gray-900"
+              fontFamily="sunny"
+              className="casual-text"
             >
               A Bit
-              <x.span
-                position="relative"
-                display="inline-block"
-                className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-primary-400"
-              >
-                <x.span position="relative" color="gray-900">
-                  Technical
-                </x.span>
+              <x.span position="relative" display="inline-block">
+                <x.span position="relative">Technical</x.span>
               </x.span>
-            </x.p>
+            </x.h1>
             <x.p mx="auto" mt={5} maxW="xl" fontSize="xl" color="gray-500">
               Start building for free, then add a site plan to go live. Account plans unlock additional features.
             </x.p>
-          </div>
+          </x.div>
           <x.div mt={6} pt={10} className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
             {posts.map(post => (
               <PostCard key={post._id} {...post} />
