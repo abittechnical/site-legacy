@@ -6,13 +6,13 @@
   :root {
     --background-primary: #0d0d0d;
     --background-secondary: #fff;
-    @apply selection:bg-primary-400 selection:text-neutral-900;
+    @apply selection:bg-primary-400 selection:text-neutral-800;
   }
   #__next {
     @apply h-full;
   }
   body {
-    @apply pt-32 text-lg;
+    @apply lg:pt-32;
     background-image: -webkit-repeating-radial-gradient(
       center center,
       var(--background-primary),
@@ -28,34 +28,9 @@
   .container {
     width: 95%;
     margin-inline: auto;
-    max-width: 800px;
+    max-width: 860px;
   }
   .custom-link {
     @apply border-b-2 font-semibold hover:border-b-4;
-  }
-  #site-header-container {
-    width: 100%;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  #site-header-container > * + * {
-    margin-top: 0.5em;
-  }
-  @media all and (min-width: 1300px) {
-    #site-header-container {
-      padding: 0;
-      justify-content: flex-start;
-      flex-direction: row;
-      flex-wrap: wrap;
-      text-align: left;
-    }
-    #site-header-container > * + * {
-      margin-top: 0;
-      border-left: 4px solid;
-    }
   }
 }

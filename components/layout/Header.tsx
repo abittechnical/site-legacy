@@ -7,9 +7,9 @@ export type HeaderProps = {}
 const Header = ({}: HeaderProps) => {
   return (
     <header className="w-full border-b bg-white xl:fixed xl:left-0 xl:top-0 xl:z-50">
-      <div id="site-header-container">
+      <div className="header-inner">
         <div className="flex items-center pr-4">
-          <Link href="/" className="text-2xl font-bold xl:flex-grow xl:py-4 xl:px-6 xl:text-base">
+          <Link href="/" className="display-text text-2xl font-bold xl:flex-grow xl:py-4 xl:px-6">
             _ Bit Technical
           </Link>
         </div>

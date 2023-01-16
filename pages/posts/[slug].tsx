@@ -32,14 +32,14 @@ const Article = ({ post }: { post: Post }) => {
       </Head>
       <div className="container">
         <WindowFrame withHeader>
-          <article className="prose mx-auto lg:prose-xl">
-            <div className="mb-6 text-center">
-              <h1 className="mb-1 text-3xl font-bold">{post.title}</h1>
+          <article className=" mx-auto ">
+            <div className="mb-4 text-center">
+              <h1 className="display-text text-7xl">{post.title}</h1>
               <time dateTime={post.date} className="text-sm text-slate-600">
                 {format(parseISO(post.date), 'LLLL d, yyyy')}
               </time>
             </div>
-            <div className="cl-post-body">
+            <div className="cl-post-body prose prose-headings:display-text lg:prose-xl">
               <MDXContent />
             </div>
           </article>

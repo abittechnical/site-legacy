@@ -36,12 +36,12 @@ const Home = ({ posts }: { posts: Post[] }) => {
       <main className="container">
         <WindowFrame>
           <div className="text-center">
-            <p className="mt-1  text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
-              A Bit
+            <h1 className="display-text  mt-1 text-4xl font-bold tracking-tight  sm:text-5xl lg:text-6xl">
+              A Bit&nbsp;
               <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-primary-400">
-                <span className="relative text-neutral-900">Technical</span>
+                <span className="relative">Technical</span>
               </span>
-            </p>
+            </h1>
             <p className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
               Start building for free, then add a site plan to go live. Account plans unlock additional features.
             </p>

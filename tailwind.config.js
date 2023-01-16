@@ -1,4 +1,5 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -31,29 +32,35 @@ module.exports = {
           900: '#200900',
         },
         neutral: {
-          50: '#f2f2f2',
-          100: '#d9d9d9',
-          200: '#bfbfbf',
-          300: '#a6a6a6',
-          400: '#8c8c8c',
-          500: '#737373',
-          600: '#595959',
-          700: '#404040',
-          800: '#262626',
-          900: '#0d0d0d',
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
         },
       },
       fontFamily: {
-        sans: ['var(--font-sora)', ...fontFamily.sans],
+        sans: ['var(--font-body)', ...fontFamily.sans],
+        heading: ['var(--font-heading)', ...fontFamily.sans],
       },
       boxShadow: {
         DEFAULT: '12px 12px 0 0 #0d0d0d',
       },
       borderWidth: {
         DEFAULT: '4px',
+        lg: '6px',
       },
       borderColor: {
         DEFAULT: '#0d0d0d',
+      },
+      borderRadius: {
+        DEFAULT: '8px',
+        lg: '16px',
       },
     },
   },
@@ -62,5 +69,41 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        '.display-text': {
+          fontFamily: theme('fontFamily.heading'),
+          WebkitTextStroke: '1px black',
+          color: 'white',
+          textShadow: `3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000`,
+          '::selection': {
+            color: 'white',
+          },
+        },
+        '.header-inner': {
+          width: '100%',
+          padding: '1rem',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          '& > * + *': {
+            marginTop: '0.5rem',
+          },
+          '@media (min-width: 1280px)': {
+            padding: 0,
+            justifyContent: 'flex-start',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            textAlign: 'left',
+            '& > * + *': {
+              marginTop: 0,
+              borderLeft: '4px solid',
+            },
+          },
+        },
+      })
+    }),
   ],
 }
