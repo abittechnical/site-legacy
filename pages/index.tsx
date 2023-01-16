@@ -1,26 +1,28 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import { x } from '@xstyled/styled-components'
 import { compareDesc, format, parseISO } from 'date-fns'
+import { Container, CustomLink, WindowFrame } from '../components'
 import { allPosts, Post } from 'contentlayer/generated'
-import { CustomLink, Header, WindowFrame } from '../components'
 
 const PostCard = ({ title, date, url }: Post) => (
   <div>
-    <p className="text-sm text-gray-500">
+    <x.p fontSize="sm" color="gray-500">
       <time dateTime={date}>{format(parseISO(date), 'LLLL d, yyyy')}</time>
-    </p>
-    <div className="mt-2 block">
-      <p className=" text-xl font-semibold text-gray-900">{title}</p>
-      <p className="mt-3 text-base text-gray-500">
+    </x.p>
+    <x.div mt={2}>
+      <x.p fontSize="xl" fontWeight="semibold" color="gray-900">
+        {title}
+      </x.p>
+      <x.p mt={3} color="gray-500">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam cupiditate dolorum eligendi enim et, ex
         excepturi inventore ipsam ipsum libero minima obcaecati quas sed?
-      </p>
-    </div>
-    <div className="mt-3">
+      </x.p>
+    </x.div>
+    <x.div mt={3}>
       <CustomLink href={url} className="text-base font-semibold text-secondary-400 hover:text-indigo-500">
         Read full story
       </CustomLink>
-    </div>
+    </x.div>
   </div>
 )
 
@@ -33,26 +35,38 @@ const Home = ({ posts }: { posts: Post[] }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="container">
+      <Container>
         <WindowFrame>
           <div className="text-center">
-            <p className="mt-1  text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+            <x.p
+              mt={1}
+              fontSize={{ _: '4xl', sm: '5xl', lg: '6xl' }}
+              fontWeight="bold"
+              letterSpacing="tight"
+              color="gray-900"
+            >
               A Bit
-              <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-primary-400">
-                <span className="relative text-neutral-900">Technical</span>
-              </span>
-            </p>
-            <p className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
+              <x.span
+                position="relative"
+                display="inline-block"
+                className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-primary-400"
+              >
+                <x.span position="relative" color="gray-900">
+                  Technical
+                </x.span>
+              </x.span>
+            </x.p>
+            <x.p mx="auto" mt={5} maxW="xl" fontSize="xl" color="gray-500">
               Start building for free, then add a site plan to go live. Account plans unlock additional features.
-            </p>
+            </x.p>
           </div>
-          <div className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+          <x.div mt={6} pt={10} className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
             {posts.map(post => (
               <PostCard key={post._id} {...post} />
             ))}
-          </div>
+          </x.div>
         </WindowFrame>
-      </main>
+      </Container>
     </>
   )
 }
