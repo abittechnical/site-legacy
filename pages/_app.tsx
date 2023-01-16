@@ -11,11 +11,18 @@ const sora = Sora({
 })
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
-      <div className={`${sora.variable}`}>
-        <Header />
-        <Component {...pageProps} />
-      </div>
-    </ThemeProvider>
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${sora.style.fontFamily};
+        }
+      `}</style>
+      <ThemeProvider>
+        <div className={`${sora.variable}`}>
+          <Header />
+          <Component {...pageProps} />
+        </div>
+      </ThemeProvider>
+    </>
   )
 }

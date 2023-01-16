@@ -53,6 +53,9 @@ export const theme = {
     ...defaultTheme.sizes,
     frame: '800px',
   },
+  fontFamily: {
+    sans: 'var(--font-sora)',
+  },
 }
 
 export const GlobalStyles = createGlobalStyle`

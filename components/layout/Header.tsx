@@ -32,15 +32,7 @@ const SiteHeaderContainer = styled.div`
 
 const Header = ({}: HeaderProps) => {
   return (
-    <x.header
-      w="full"
-      borderBottomWidth
-      bg="white"
-      position={{ _: 'static', xl: 'fixed' }}
-      top={0}
-      left={0}
-      zIndex={{ xl: 50 }}
-    >
+    <x.header w="full" borderBottomWidth bg="white" position={{ xl: 'fixed' }} top={0} left={0} zIndex={{ xl: 50 }}>
       <SiteHeaderContainer>
         <x.div display="flex" alignItems="center" pr={4}>
           <x.span fontSize={{ _: '2xl', xl: 'default' }} fontWeight="bold" flexGrow={{ xl: 1 }} p={{ xl: '4 6' }}>
