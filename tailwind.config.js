@@ -49,14 +49,14 @@ module.exports = {
         heading: ['var(--font-heading)', ...fontFamily.sans],
       },
       boxShadow: {
-        DEFAULT: '12px 12px 0 0 #0d0d0d',
+        DEFAULT: '12px 12px 0 0 #111827',
       },
       borderWidth: {
         DEFAULT: '4px',
         lg: '6px',
       },
       borderColor: {
-        DEFAULT: '#0d0d0d',
+        DEFAULT: '#111827',
       },
       borderRadius: {
         DEFAULT: '8px',
@@ -75,10 +75,7 @@ module.exports = {
           fontFamily: theme('fontFamily.heading'),
           WebkitTextStroke: '1px black',
           color: 'white',
-          textShadow: `3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000`,
-          '::selection': {
-            color: 'white',
-          },
+          textShadow: `3px 3px 0 #111827, -1px -1px 0 #111827, 1px -1px 0 #111827, -1px 1px 0 #111827, 1px 1px 0 #111827`,
         },
         '.header-inner': {
           width: '100%',

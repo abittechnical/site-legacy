@@ -8,7 +8,6 @@ import { GetStaticPropsContext } from 'next'
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
-  console.log(paths)
   return {
     paths,
     fallback: false,

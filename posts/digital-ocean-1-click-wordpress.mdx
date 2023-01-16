@@ -1,0 +1,98 @@
+---
+title: Digital Ocean 1 Click Wordpress
+date: 2023-1-16
+---
+## Get started instructions
+In addition to the package installation, this 1-Click App also:
+
+-   Enables the UFW firewall to allow only SSH (port `22`, rate limited), HTTP (port `80`), and HTTPS (port `443`) access.
+-   Sets the MySQL root password, runs `mysql_secure_installation`, and creates a `wordpress` user with the necessary permissions. Note that the Droplet root user will not be prompted for the MySQL password. Keep in mind that if you’re connecting to a DigitalOcean Managed Database, the locally installed database will be disabled.
+-   Sets up the `debian-sys-maint` user in MySQL so the system’s init scripts for MySQL will work without requiring the MySQL `root` user password.
+-   Creates the initial WordPress configuration file to set up [salt keys](https://developer.wordpress.org/reference/functions/wp_salt/) and allow the WordPress instance to connect to the database.
+-   Disables XML-RPC to help prevent DDoS and other brute force attacks.
+-   Modifies some of PHP’s settings to increase the maximum file size and execution time.
+-   Enables the [Apache rewrite module](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) so the WordPress permalink feature will work.
+-   Configures Apache with `UseCanonicalName On` to mitigate [CVE-2017-8295](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8295). You need a fully qualified domain name (FQDN) to use this One-Click, which you can purchase from any domain registrar. You do not have to manage your domain with [DigitalOcean DNS](https://www.digitalocean.com/docs/networking/dns/).
+
+After you create a WordPress One-Click Droplet, you’ll need to [log into the Droplet via SSH](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/) to finish the WordPress setup. If you try to visit the Droplet’s IP address before logging into the Droplet, you’ll see a DigitalOcean landing page.
+
+To finish setup, connect to the Droplet as `root`. Make sure to substitute the Droplet’s public IPv4 address.
+
+```shell
+ssh root@your_droplet_public_ipv4
+```
+
+Then, once your database is ready, the interactive script that runs will first prompt you for your domain or subdomain. For testing purposes, you can enter the IP address of the Droplet if you don't have a domain setup yet.
+
+---
+
+### Connecting WordPress to a DigitalOcean Managed Database
+
+If you'd like to use [a DigitalOcean managed MySQL database](https://www.digitalocean.com/docs/databases/mysql/) with your WordPress 1-Click App, make sure you select that checkbox when prompted on the Droplet Create page.
+
+---
+
+### Configure hostname and LetsEncrypt
+
+When you connect to your WordPress 1-Click App Droplet via SSH for the 1st time, you’ll be prompted to enter a hostname after any required database configuration is completed:
+
+```shell
+To cancel setup, press Ctrl+C.  This script will run again on your next login
+--------------------------------------------------
+Enter the domain name for your new WordPress site.
+(ex. example.org or test.example.org) do not include www or http/s
+--------------------------------------------------
+Domain/Subdomain name:
+```
+
+The next prompt asks if you want to use SSL for your website via Let’s Encrypt, which we recommend:
+
+```shell
+Next, you have the option of configuring LetsEncrypt to secure your new site.  Before doing this, be sure that you have pointed your domain or subdomain to this server's IP address.  You can also run LetsEncrypt certbot later with the command 'certbot --apache'
+
+Would you like to use LetsEncrypt (certbot) to configure SSL(https) for your new site? (y/n):
+```
+
+After you respond to these two prompts, you’ll see a confirmation message:
+
+```shell
+WordPress has been enabled at http://example.org  Please open this URL in a browser to complete the setup of your site.
+```
+
+At this point, you should visit the Droplet’s IP address in your browser to finish the WordPress installation through the web interface.
+
+Once the installation is complete, you can use the WordPress administration dashboard to further customize the new site. For reference:
+
+-   The root password for the MySQL instance running on your Droplet is in `/root/.digitalocean_password`. Note that the Droplet root user will not be prompted for the MySQL password.
+-   If you’re connecting to a DigitalOcean Managed Database, your MySQL connection information can be found in `/var/www/html/wp-config.php`.
+-   The web root is `/var/www/html`, and the WordPress configuration file is `/var/www/html/wp-config.php`.
+-   You can get information about the PHP installation by logging into the Droplet and running php -i.
+
+In addition, there are a few customized setup steps that we recommend you take. For example, creating an Apache virtual hosts file for each site maintains the default configuration as the fallback, as intended, and makes it easier to manage changes when hosting multiple sites.
+
+To do so, you’ll need to create two things for each domain: a new directory in `/var/www` for that domain’s content, and a new virtual host file in `/etc/apache2/sites-available` for that domain’s configuration. For a detailed walkthrough, you can follow [How to Set Up Apache Virtual Hosts](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-16-04).
+
+If you didn’t enable HTTPS during the initial setup script, you can enable it manually at any time after the fact.
+
+Setting up an SSL certificate enables HTTPS on the web server, which secures the traffic between the server and the clients connecting to it. Certbot is a free and automated way to set up SSL certificates on a server. It’s included as part of the WordPress One-Click to make securing the Droplet easier.
+
+To use Certbot, you’ll need a registered domain name and two DNS records:
+
+-   An A record from the domain (e.g., `example.com`) to the server’s IP address
+-   An A record from the domain prefaced with `www` (e.g., `www.example.com`) to the server’s IP addressAdditionally, if you’re using a virtual hosts file, you’ll need to make sure the server name directive in the VirtualHost block (e.g., `ServerName example.com`) is correctly set to the domain.
+
+Once the DNS records and, optionally, the virtual hosts files are set up, you can generate the SSL certificate. Make sure to substitute the domain in the command.
+
+```shell
+certbot --apache -d example.com -d www.example.com
+```
+
+HTTPS traffic on port `443` is already allowed through the firewall. After you set up HTTPS, you can optionally deny HTTP traffic on port `80`:
+
+```shell
+ufw delete allow 80/tcp
+```
+
+For a more detailed walkthrough, you can follow [How to Secure Apache with Let’s Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04) or view [Certbot’s official documentation](https://certbot.eff.org/docs/using.html).
+
+You can serve files from the web server by adding them to the web root (`/var/www/html`) using [SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server) or other tools.

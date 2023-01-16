@@ -1,6 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import { remarkCodeHike } from '@code-hike/mdx'
-import theme from './styles/dark-plus.json'
+import theme from './styles/tailwind-terminal-theme'
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -30,6 +30,6 @@ export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [[remarkCodeHike, { theme }]],
+    remarkPlugins: [[remarkCodeHike, { theme, lineNumbers: true }]],
   },
 })
