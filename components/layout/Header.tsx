@@ -22,7 +22,9 @@ const Header = ({}: HeaderProps) => {
             Bitwhys
           </CustomLink>
         </div>
-        <button className="py-4 px-6 leading-4">Login</button>
+        <div className="py-4 px-6 leading-4">
+          <button className="display-text xl:text-3xl">Login</button>
+        </div>
       </div>
     </header>
   )

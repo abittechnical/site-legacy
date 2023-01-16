@@ -7,7 +7,7 @@ export type WindowFrameProps = {
   rightAction?: () => void
 }
 
-const WindowFrame = ({ children, withHeader = false }: WindowFrameProps) => {
+const WindowFrame = ({ withHeader = false, children, leftAction, rightAction }: WindowFrameProps) => {
   return (
     <div
       className="before:full relative rounded-lg border-lg bg-white
@@ -17,8 +17,8 @@ const WindowFrame = ({ children, withHeader = false }: WindowFrameProps) => {
       {withHeader && (
         <header className="flex h-12 justify-end rounded-t border-b bg-neutral-200 px-6">
           <div className="flex items-center space-x-4">
-            <span className="h-6 w-6 rounded-full border bg-white"></span>
-            <span className="h-6 w-6 rounded-full border bg-white"></span>
+            <button onClick={leftAction} className="h-6 w-6 rounded-full border bg-white" />
+            <button onClick={rightAction} className="h-6 w-6 rounded-full border bg-white" />
           </div>
         </header>
       )}

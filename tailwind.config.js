@@ -50,6 +50,7 @@ module.exports = {
       },
       boxShadow: {
         DEFAULT: '12px 12px 0 0 #111827',
+        sm: '4px 4px 0 0 #111827',
       },
       borderWidth: {
         DEFAULT: '4px',
@@ -60,6 +61,7 @@ module.exports = {
       },
       borderRadius: {
         DEFAULT: '8px',
+        md: '12px',
         lg: '16px',
       },
     },
@@ -96,7 +98,7 @@ module.exports = {
             textAlign: 'left',
             '& > * + *': {
               marginTop: 0,
-              borderLeft: '4px solid',
+              borderLeft: '4px solid !important',
             },
           },
         },

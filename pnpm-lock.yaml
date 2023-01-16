@@ -22,6 +22,7 @@ specifiers:
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
   autoprefixer: ^10.4.13
+  class-variance-authority: ^0.4.0
   clsx: ^1.2.1
   contentlayer: ^0.2.9
   css-loader: ^6.7.3
@@ -47,6 +48,7 @@ dependencies:
   '@code-hike/mdx': 0.7.4_react@18.2.0
   '@heroicons/react': 2.0.13_react@18.2.0
   '@next/font': 13.1.1
+  class-variance-authority: 0.4.0_typescript@4.9.4
   clsx: 1.2.1
   contentlayer: 0.2.9
   date-fns: 2.29.3
@@ -5315,6 +5317,17 @@ packages:
       isobject: 3.0.1
       static-extend: 0.1.2
     dev: true
+
+  /class-variance-authority/0.4.0_typescript@4.9.4:
+    resolution: {integrity: sha512-74enNN8O9ZNieycac/y8FxqgyzZhZbxmCitAtAeUrLPlxjSd5zA7LfpprmxEcOmQBnaGs5hYhiSGnJ0mqrtBLQ==}
+    peerDependencies:
+      typescript: '>= 4.5.5 < 5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 4.9.4
+    dev: false
 
   /clean-css/5.3.1:
     resolution: {integrity: sha512-lCr8OHhiWCTw4v8POJovCoh4T7I9U11yVsPjMWWnnMmp9ZowCxyad1Pathle/9HjaDp+fdQKjO9fQydE6RHTZg==}
@@ -12087,7 +12100,6 @@ packages:
     resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /uglify-js/3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { compareDesc, format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
-import { CustomLink, Header, WindowFrame } from '../components'
+import { Badge, CustomLink, Header, WindowFrame } from '../components'
 
 const PostCard = ({ title, date, url }: Post) => (
   <div>
@@ -23,6 +23,63 @@ const PostCard = ({ title, date, url }: Post) => (
     </div>
   </div>
 )
+
+const categories = [
+  {
+    name: 'javascript',
+    parent: 'languages',
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'design',
+    parent: null,
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'react',
+    parent: 'javascript',
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'nlp',
+    parent: 'artificial intelligence',
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'software',
+    parent: null,
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'node',
+    parent: 'javascript',
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'java',
+    parent: 'languages',
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'frontend',
+    parent: 'software',
+    posts: 8,
+    trending: true,
+  },
+  {
+    name: 'backend',
+    parent: 'software',
+    posts: 8,
+    trending: true,
+  },
+]
 
 const Home = ({ posts }: { posts: Post[] }) => {
   return (
@@ -46,9 +103,9 @@ const Home = ({ posts }: { posts: Post[] }) => {
               Start building for free, then add a site plan to go live. Account plans unlock additional features.
             </p>
           </div>
-          <div className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
-            {posts.map(post => (
-              <PostCard key={post._id} {...post} />
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            {categories.map(category => (
+              <Badge key={category.name} text={category.name} />
             ))}
           </div>
         </WindowFrame>
